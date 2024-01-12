@@ -1,6 +1,7 @@
 # transcription.py
 
 from header import *
+from gcs_operations import delete_from_gcs
 import gcs_operations
 
 def transcribe_file(gcs_uri, output_path, bucket_name, file_name):
