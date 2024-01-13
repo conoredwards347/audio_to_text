@@ -1,20 +1,35 @@
 # transcription.py
 
-from header import *
-from gcs_operations import delete_from_gcs
+from google.cloud import speech_v1
+from google.cloud.speech_v1 import RecognitionConfig
 import gcs_operations
+import tkinter.messagebox as messagebox
+from pydub.utils import mediainfo
+import os
 
-def transcribe_file(gcs_uri, output_path, bucket_name, file_name):
-    # Initialise the Google Speech Client
+def get_sample_rate(audio_file_path):
+    # Use pydub to analyze the audio file and extract sample rate
+    info = mediainfo(audio_file_path)
+    return int(info['sample_rate'])
+
+def transcribe_file(gcs_uri, output_path, bucket_name, file_name, local_file_path, file_type):
+    # Determine the sample rate of the audio file
+    sample_rate_hertz = get_sample_rate(local_file_path)
+
+    # Set the correct encoding based on file type
+    encoding = speech_v1.RecognitionConfig.AudioEncoding.MP3 if file_type == "MP3" else speech_v1.RecognitionConfig.AudioEncoding.AAC
+
+    config = speech_v1.RecognitionConfig(
+        encoding=encoding,
+        sample_rate_hertz=sample_rate_hertz,
+        language_code='en-US'
+    )
+
+    # Initialize the Google Speech Client
     client = speech_v1.SpeechClient()
 
     # Configure the GCS URI for the API
     audio = speech_v1.RecognitionAudio(uri=gcs_uri)
-    config = speech_v1.RecognitionConfig(
-        encoding=speech_v1.RecognitionConfig.AudioEncoding.MP3,
-        sample_rate_hertz=48000,  # Adjust to your file's sample rate
-        language_code='en-US'
-    )
 
     # Asynchronously send the GCS URI of the audio file to the API for transcription
     operation = client.long_running_recognize(config=config, audio=audio)
@@ -45,4 +60,4 @@ def transcribe_file(gcs_uri, output_path, bucket_name, file_name):
     messagebox.showinfo("Transcription Complete", f"Transcription of {output_filename} is complete.")
 
     # Delete the file from GCS after transcription is complete
-    delete_from_gcs(bucket_name, file_name)
+    gcs_operations.delete_from_gcs(bucket_name, file_name)
