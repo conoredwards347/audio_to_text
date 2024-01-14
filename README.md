@@ -1,29 +1,30 @@
 # MP3 to Text Transcription Tool
 
 ## Description
-This Python application uses Google Cloud's Speech-to-Text API to transcribe audio from MP3 files. The application is designed with a modular architecture and provides a graphical user interface (GUI) for easy user interaction.
+This Python application uses Google Cloud's Speech-to-Text API to transcribe audio from MP3 and M4A files. The application is designed with a modular architecture and provides a graphical user interface (GUI) for easy user interaction.
 
 ## Key Features
-- **Transcription of MP3 Files**: Uses Google Cloud Speech-to-Text API for accurate and efficient transcription.
-- **Modular Design**: The code is organized into separate modules for specific functionalities - Google Cloud Storage operations, transcription process handling, and the GUI.
-- **User-Friendly GUI**: A simple Tkinter-based interface for selecting MP3 files, specifying Google Cloud Storage bucket details, and choosing output locations for transcriptions.
-- **Robust Error Handling**: Includes comprehensive error handling, especially for Google Cloud Storage operations and during the transcription process.
+- **Transcription of MP3 and M4A Files**: Uses Google Cloud Speech-to-Text API for accurate and efficient transcription of both MP3 and M4A file formats.
+- **Modular Design**: Code is organized into separate modules for specific functionalities - Google Cloud Storage operations, transcription process handling, and the GUI.
+- **User-Friendly GUI**: A simple Tkinter-based interface allows users to select MP3 or M4A files, specify Google Cloud Storage bucket details, choose output locations for transcriptions, and save bucket names for future use.
+- **Robust Error Handling**: Comprehensive error handling, especially for Google Cloud Storage operations and during the transcription process.
+- **Enhanced UI**: The GUI has been improved for clarity, simplicity, and aesthetic appeal, including dropdown menus for file types and GCS bucket names.
 
 ## Modules
 - `header.py`: Common imports and configurations for the application.
 - `gcs_operations.py`: Functions for uploading to and deleting files from Google Cloud Storage.
 - `transcription.py`: Handles the transcription of audio files using the Google Cloud Speech-to-Text API.
-- `gui.py`: Manages the Tkinter-based graphical user interface.
+- `gui.py`: Manages the Tkinter-based graphical user interface, with enhanced functionality for user interaction.
 - `main.py`: The main entry point of the application, integrating all other modules.
 
 ## Setup and Installation
 1. Ensure Python 3.x is installed.
-2. Install required packages: `pip install google-cloud-storage google-cloud-speech tkinter`.
+2. Install required packages: `pip install google-cloud-storage google-cloud-speech tkinter pydub`.
 3. Clone the repository: `git clone https://github.com/conoredwards347/mp3_to_text.git`.
 4. Navigate to the project directory and run `main.py`.
 
 ## Usage
-Run `main.py` to start the application. The GUI will guide you through selecting an MP3 file, inputting necessary Google Cloud Storage details, and choosing where to save the transcription.
+Run `main.py` to start the application. The GUI will guide you through selecting an MP3 or M4A file, inputting necessary Google Cloud Storage details, and choosing where to save the transcription. You can also save and select GCS bucket names for ease of future use.
 
 ## Contributions
 Contributions to this project are welcome. Please fork the repository and submit a pull request with your proposed changes.
