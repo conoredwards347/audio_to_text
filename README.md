@@ -19,7 +19,7 @@ This Python application uses Google Cloud's Speech-to-Text API to transcribe aud
 
 ## Setup and Installation
 1. Ensure Python 3.x is installed.
-2. Install required packages: `pip install google-cloud-storage google-cloud-speech tkinter pydub`.
+2. Install required packages: `pip install google-cloud-storage google-cloud-speech pydub`.
 3. Clone the repository: `git clone https://github.com/conoredwards347/mp3_to_text.git`.
 4. Navigate to the project directory and run `main.py`.
 
