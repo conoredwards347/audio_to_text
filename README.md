@@ -5,10 +5,8 @@ This Python application uses Google Cloud's Speech-to-Text API to transcribe aud
 
 ## Key Features
 - **Transcription of MP3 and M4A Files**: Uses Google Cloud Speech-to-Text API for accurate and efficient transcription of both MP3 and M4A file formats.
-- **Modular Design**: Code is organized into separate modules for specific functionalities - Google Cloud Storage operations, transcription process handling, and the GUI.
 - **User-Friendly GUI**: A simple Tkinter-based interface allows users to select MP3 or M4A files, specify Google Cloud Storage bucket details, choose output locations for transcriptions, and save bucket names for future use.
 - **Robust Error Handling**: Comprehensive error handling, especially for Google Cloud Storage operations and during the transcription process.
-- **Enhanced UI**: The GUI has been improved for clarity, simplicity, and aesthetic appeal, including dropdown menus for file types and GCS bucket names.
 
 ## Modules
 - `header.py`: Common imports and configurations for the application.
