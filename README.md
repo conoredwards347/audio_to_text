@@ -1,7 +1,7 @@
-# MP3 to Text Transcription Tool
+# Transcription Tool
 
 ## Description
-This Python application uses Google Cloud's Speech-to-Text API to transcribe audio from MP3 and M4A files. The application is designed with a modular architecture and provides a graphical user interface (GUI) for easy user interaction.
+This Python application uses Google Cloud's Speech-to-Text API to transcribe audio from MP3 and M4A files.
 
 ## Key Features
 - **Transcription of MP3 and M4A Files**: Uses Google Cloud Speech-to-Text API for accurate and efficient transcription of both MP3 and M4A file formats.
