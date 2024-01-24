@@ -8,7 +8,7 @@ from pydub.utils import mediainfo
 import os
 
 def get_sample_rate(audio_file_path):
-    # Use pydub to analyze the audio file and extract sample rate
+    # Use pydub to analyse the audio file and extract sample rate
     info = mediainfo(audio_file_path)
     return int(info['sample_rate'])
 
@@ -25,7 +25,7 @@ def transcribe_file(gcs_uri, output_path, bucket_name, file_name, local_file_pat
         language_code='en-US'
     )
 
-    # Initialize the Google Speech Client
+    # Initialise the Google Speech Client
     client = speech_v1.SpeechClient()
 
     # Configure the GCS URI for the API
