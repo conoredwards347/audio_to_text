@@ -51,50 +51,6 @@ def prompt_bucket_name(root, bucket_names):
     top.transient(root)  # Make the new window stay on top of the root window
     return name_var, top
 
-def save_bucket_name(bucket_name):
-    with open(BUCKET_NAME_FILE, "a") as file:
-        file.write(bucket_name + "\n")
-
-def load_bucket_names():
-    try:
-        with open(BUCKET_NAME_FILE, "r") as file:
-            return [name.strip() for name in file.readlines()]
-    except FileNotFoundError:
-        return []
-
-def prompt_bucket_name(root, bucket_names):
-    def save_name():
-        new_name = name_var.get()
-        if new_name and new_name not in bucket_names:
-            save_bucket_name(new_name)
-            bucket_names.append(new_name)
-            name_dropdown['values'] = bucket_names
-            messagebox.showinfo("Saved", "Bucket name saved.")
-        elif new_name:
-            messagebox.showerror("Duplicate", "This bucket name already exists.")
-
-    def submit_name():
-        selected_name = name_var.get()
-        if selected_name:
-            top.destroy()
-            return selected_name
-
-    top = tk.Toplevel(root)
-    top.title("Enter GCS Bucket Name")
-
-    name_var = tk.StringVar()
-    name_dropdown = ttk.Combobox(top, textvariable=name_var, values=bucket_names)
-    name_dropdown.pack(padx=20, pady=5)
-
-    save_button = tk.Button(top, text="Save Bucket Name", command=save_name)
-    save_button.pack(side=tk.LEFT, padx=10, pady=5)
-
-    submit_button = tk.Button(top, text="Submit", command=submit_name)
-    submit_button.pack(side=tk.RIGHT, padx=10, pady=5)
-
-    top.transient(root)  # Make the new window stay on top of the root window
-    return name_var, top
-
 def select_file(root, bucket_names, file_type):
     file_types = [("MP3 files", "*.mp3")] if file_type == "MP3" else [("M4A files", "*.m4a")]
     local_file_path = filedialog.askopenfilename(filetypes=file_types)
